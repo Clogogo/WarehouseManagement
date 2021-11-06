@@ -12,10 +12,9 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+public class Users {
   @Id
   @Column(name = "id", nullable = false)
   private Long id;
@@ -29,18 +28,22 @@ public class User {
   @Column(name = "last_name", nullable = false)
   private String userLastName;
 
-  @Column(name = "password", nullable = false)
-  private String password;
+  @Column(name = "active", nullable = false)
+  private int active = 1;
 
-  @Column(name = "pass_active", nullable = false)
-  private String passwordActiveDays;
+//  @Column(name = "password", nullable = false)
+//  private String password;
+//
+//  @Column(name = "pass_active", nullable = false)
+//  private String passwordActiveDays;
+//
+//  @Column(name = "userId", nullable = false)
+//  private String userId;
+//
+//  @Column(name = "email", nullable = false)
+//  private String EmailAddress;
+//
+//  @Column(name = "lang", nullable = false)
+//  private String Language;
 
-  @Column(name = "userId", nullable = false)
-  private String userId;
-
-  @Column(name = "email", nullable = false)
-  private String EmailAddress;
-
-  @Column(name = "lang", nullable = false)
-  private String Language;
 }
