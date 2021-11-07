@@ -1,7 +1,6 @@
 package com.example.warehouse.warehousemanagement.model;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Locale;
