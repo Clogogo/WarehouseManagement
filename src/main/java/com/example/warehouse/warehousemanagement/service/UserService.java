@@ -1,17 +1,17 @@
 package com.example.warehouse.warehousemanagement.service;
 
-import com.example.warehouse.warehousemanagement.repository.UsersRepository;
-import com.example.warehouse.warehousemanagement.model.Users;
+import com.example.warehouse.warehousemanagement.model.User;
+import com.example.warehouse.warehousemanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersService {
-  @Autowired UsersRepository usersRepo;
+public class UserService {
+  @Autowired
+  UserRepository userRepository;
 
   // get all
   /**
@@ -19,8 +19,8 @@ public class UsersService {
    *
    * @param:
    */
-  public List<Users> getAllUsers() {
-    return usersRepo.findAll();
+  public List<User> getAllUser() {
+    return userRepository.findAll();
   }
 
   // get user by id
@@ -29,8 +29,8 @@ public class UsersService {
    *
    * @param: userId
    */
-  public Optional<Users> getUserById(Long id) {
-    return usersRepo.findById(id);
+  public Optional<User> getUserById(Long id) {
+    return userRepository.findById(id);
   }
 
   /**
@@ -38,8 +38,8 @@ public class UsersService {
    *
    * @param: user body
    */
-  public Users addUser(Users user) {
-    return usersRepo.save(user);
+  public User addUser(User user) {
+    return userRepository.save(user);
   }
 
   /**
@@ -47,9 +47,9 @@ public class UsersService {
    *
    * @param: user body
    */
-  public Users updateUser(Users user) {
-    if (usersRepo.findById(user.getId()).isPresent()) {
-      return usersRepo.save(user);
+  public User updateUser(User user) {
+    if (userRepository.findById(user.getId()).isPresent()) {
+      return userRepository.save(user);
     } else {
       return null;
     }
@@ -62,8 +62,8 @@ public class UsersService {
    */
   public boolean deleteUser(Long id) {
 
-    if (usersRepo.findById(id).isPresent()) {
-      usersRepo.deleteById(id);
+    if (userRepository.findById(id).isPresent()) {
+      userRepository.deleteById(id);
       return true;
     }
     return false;
@@ -75,10 +75,10 @@ public class UsersService {
    * @param: userId
    */
   public boolean deactivateUser(Long id) {
-    Optional<Users> userData = usersRepo.findById(id);
+    Optional<User> userData = userRepository.findById(id);
     if (userData.isPresent()) {
       userData.get().setActive(0);
-      usersRepo.save(userData.get());
+      userRepository.save(userData.get());
       return true;
     }
     else {

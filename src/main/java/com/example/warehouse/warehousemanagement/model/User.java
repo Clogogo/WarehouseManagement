@@ -12,7 +12,8 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "user")
-public class Users {
+public class User {
+
   @Id
   @Column(name = "id", nullable = false)
   private Long id;
@@ -29,24 +30,23 @@ public class Users {
   @Column(name = "active", nullable = false)
   private Integer active = 1;
 
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-  private Roles role;
+  private Role role;
 
-//  @Column(name = "password", nullable = false)
-//  private String password;
-//
-//  @Column(name = "pass_active", nullable = false)
-//  private String passwordActiveDays;
-//
-//  @Column(name = "userId", nullable = false)
-//  private String userId;
-//
-//  @Column(name = "email", nullable = false)
-//  private String EmailAddress;
-//
-//  @Column(name = "lang", nullable = false)
-//  private String Language;
+  //  @Column(name = "password", nullable = false)
+  //  private String password;
+  //
+  //  @Column(name = "pass_active", nullable = false)
+  //  private String passwordActiveDays;
+  //
+  //  @Column(name = "userId", nullable = false)
+  //  private String userId;
+  //
+  //  @Column(name = "email", nullable = false)
+  //  private String EmailAddress;
+  //
+  //  @Column(name = "lang", nullable = false)
+  //  private String Language;
 
 }

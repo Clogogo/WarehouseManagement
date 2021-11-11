@@ -1,11 +1,11 @@
 package com.example.warehouse.warehousemanagement.repository;
 
-import com.example.warehouse.warehousemanagement.model.Roles;
+import com.example.warehouse.warehousemanagement.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RolesRepository extends JpaRepository<Roles, Long>, JpaSpecificationExecutor<Roles> {
-    Roles findByroleName(String name );
+public interface RoleRepository extends JpaRepository<Role, Long>, JpaSpecificationExecutor<Role> {
+    Role findByroleName(String name );
 }
