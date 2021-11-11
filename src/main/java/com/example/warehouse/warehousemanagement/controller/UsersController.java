@@ -72,10 +72,9 @@ public class UsersController {
   // Deactivate User
   @PutMapping(value = "/deactivate/{id}")
   public ResponseEntity<Users> deactivateUser(@PathVariable Long id) {
-    try {
-      usersService.deactivateUser(id);
+    if (usersService.deactivateUser(id)) {
       return new ResponseEntity<>(HttpStatus.OK);
-    } catch (Exception e) {
+    } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }

@@ -1,6 +1,6 @@
 package com.example.warehouse.warehousemanagement.service;
 
-import com.example.warehouse.warehousemanagement.dao.RolesRepository;
+import com.example.warehouse.warehousemanagement.repository.RolesRepository;
 import com.example.warehouse.warehousemanagement.model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

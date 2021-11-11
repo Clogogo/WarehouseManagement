@@ -1,8 +1,9 @@
 package com.example.warehouse.warehousemanagement.service;
 
-import com.example.warehouse.warehousemanagement.dao.UsersRepository;
+import com.example.warehouse.warehousemanagement.repository.UsersRepository;
 import com.example.warehouse.warehousemanagement.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,17 +74,15 @@ public class UsersService {
    *
    * @param: userId
    */
-  public void deactivateUser(Long id) {
+  public boolean deactivateUser(Long id) {
     Optional<Users> userData = usersRepo.findById(id);
-
-    userData.ifPresent(
-        users ->
-            usersRepo.save(
-                new Users(
-                    users.getId(),
-                    users.getUsername(),
-                    users.getUserFirstName(),
-                    users.getUserLastName(),
-                    0)));
+    if (userData.isPresent()) {
+      userData.get().setActive(0);
+      usersRepo.save(userData.get());
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

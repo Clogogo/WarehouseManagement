@@ -1,11 +1,9 @@
 package com.example.warehouse.warehousemanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +27,12 @@ public class Users {
   private String userLastName;
 
   @Column(name = "active", nullable = false)
-  private int active = 1;
+  private Integer active = 1;
+
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+  private Roles role;
 
 //  @Column(name = "password", nullable = false)
 //  private String password;

@@ -14,7 +14,6 @@ import java.util.Locale;
 @Table(name = "roles")
 public class Roles {
 
-
   @Id
   @Column(name = "id", nullable = false)
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +26,6 @@ public class Roles {
   private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
   public void setRoleName(String roleName) {
-    this.roleName = roleName.toLowerCase(Locale.ROOT);
+    this.roleName = roleName.toLowerCase();
   }
 }
